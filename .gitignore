@@ -1,0 +1,19 @@
+# Compiled object files
+*.o
+*.slo
+*.lo
+*.obj
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Resources
+*.pdf
+*.csv
+
+# Compiled Dynamic Libs
+*.so
+*.dll
+*.dylib
