@@ -1,8 +1,6 @@
 # LLAtoECEF Solution by Ryan Mueller for SciTech Technical Assessment
 
-## This program is designed to convert WGS84 Latitude, Longitude, and Altitude
-## Into ECEF coordinates and calculate velocity based on time between UNIX epochs
-## See reasoning for structure and execution decisions below
+## This program is designed to convert WGS84 Latitude, Longitude, and Altitude into ECEF coordinates and calculate velocity based on time between UNIX epochs. See reasoning for structure and execution decisions below
 
 ## To generate the Makefile to compile
 It is preferred to call CMake in the build folder using the recursive 
