@@ -14,7 +14,8 @@ constructed into the proper format in the build folder.
 
 ## To Execute the program
 The program uses two parameters in the command line. The name of the program:
-```LLAtoECEF``` and the name and path of the CSV file to run.
+```LLAtoECEF``` and the name and path of the CSV file to run. In this case to run the program it will be:
+```./LLAtoECEF ../data/SciTec_code_problem_data.csv```.
 
 ## Reasoning for structure
 ### The program's class design

@@ -17,13 +17,13 @@ ECEF::ECEF()
  * set lla class parameter to LLA constructor
  * and set h class parameter to constructor function parameter
  * */
-ECEF::ECEF(ld Lat, ld Long, ld Alt, ld deltaTime, ld H)
+ECEF::ECEF(double Lat, double Long, double Alt, double deltaTime)
 {
-   lla = LLA(Lat, Long, Alt, deltaTime);
-    h = H;
+    lla = LLA(Lat, Long, Alt, deltaTime);
+    h = Alt;
 }
 
-ld ECEF::convertLLAtoX()
+double ECEF::convertLLAtoX()
 {
     /**
      * Calculate the X ECEF by getting N and calculating constants
@@ -33,7 +33,7 @@ ld ECEF::convertLLAtoX()
     return X;
 }
 
-ld ECEF::convertLLAtoY()
+double ECEF::convertLLAtoY()
 {
     /**
      * Calculate the Y ECEF by getting N and calculating constants
@@ -43,7 +43,7 @@ ld ECEF::convertLLAtoY()
     return Y;
 }
 
-ld ECEF::convertLLAtoZFlattened()
+double ECEF::convertLLAtoZFlattened()
 {
     /**
      * Convert Z using the flattened semi minor axis
@@ -52,7 +52,7 @@ ld ECEF::convertLLAtoZFlattened()
     return Z;
 }
 
-ld ECEF::convertLLAtoZConstant()
+double ECEF::convertLLAtoZConstant()
 {   
    /**
     * Convert Z using semi minor axis constant
@@ -61,7 +61,7 @@ ld ECEF::convertLLAtoZConstant()
     return Z;
 }
 
-ld ECEF::calculateN()
+double ECEF::calculateN()
 {
     /**
      * Get radius of curvate using
@@ -71,8 +71,17 @@ ld ECEF::calculateN()
     return N;
 }
 
-ld ECEF::sinSquaredLat(ld lat)
+double ECEF::sinSquaredLat(double lat)
 {
-    ld tmp = sin(lat);
+    double tmp = sin(lat);
     return tmp * tmp;
+}
+
+void ECEF::printCalculated()
+{
+    double calcX = convertLLAtoX();
+    double calcY = convertLLAtoY();
+    double calcZ = convertLLAtoZFlattened();
+    double calcN = calculateN();
+    std::cout << calcX << "\t" << calcY << "\t" << calcZ << "\t" << calcN << std::endl;
 }

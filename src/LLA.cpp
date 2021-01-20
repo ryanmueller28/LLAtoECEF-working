@@ -5,7 +5,7 @@ LLA::LLA()
 
 }
 
-LLA::LLA(ld dtUnixEpoch, ld latitude, ld longitude, ld altitude)
+LLA::LLA(double dtUnixEpoch, double latitude, double longitude, double altitude)
 {
     Latitude = latitude;
     Longitude = longitude;
