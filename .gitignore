@@ -11,9 +11,13 @@
 
 # Resources
 *.pdf
-*.csv
 
 # Compiled Dynamic Libs
 *.so
 *.dll
 *.dylib
+
+# CMake generations
+CMakeCache.txt
+*.CMake
+CMakeFiles/
