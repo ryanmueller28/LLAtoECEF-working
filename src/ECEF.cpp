@@ -67,8 +67,15 @@ double ECEF::calculateN()
      * Get radius of curvate using
      * a / square root (1 - e ^ 2 sin ^ 2 latitude)
      * */
-    N = params.SEMI_MAJOR_AXIS / (sqrt(1 - pow(M_E, 2) * sinSquaredLat(lla.getLat())));
+    
+    N = params.SEMI_MAJOR_AXIS / (sqrt(squareRootNParams()));
     return N;
+}
+
+double ECEF::squareRootNParams()
+{
+    // Feels hacky to return the inverse, but it's a negative number otherwise and sqrt a negative number returns -NAN
+    return -(1 - pow(M_E, 2) * sinSquaredLat(lla.getLat()));
 }
 
 double ECEF::sinSquaredLat(double lat)
@@ -77,11 +84,18 @@ double ECEF::sinSquaredLat(double lat)
     return tmp * tmp;
 }
 
+/*
+Funciton for testing print issues
 void ECEF::printCalculated()
 {
     double calcX = convertLLAtoX();
     double calcY = convertLLAtoY();
     double calcZ = convertLLAtoZFlattened();
     double calcN = calculateN();
+    std::cout << "Printing calculated ECEF Values:\n";
+    std::cout << "\tCalling sinSquaredLat function:\t" << sinSquaredLat(lla.getLat()) << std::endl;
+    std::cout << "\t\tCalling SquareRootNParamsFunction:\t" << squareRootNParams() << std::endl;
+    std::cout << calculateN() << std::endl;
     std::cout << calcX << "\t" << calcY << "\t" << calcZ << "\t" << calcN << std::endl;
 }
+*/

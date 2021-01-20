@@ -19,13 +19,15 @@ public:
     double convertLLAtoZFlattened();
     double convertLLAtoZConstant();
     double calculateN();
-
+/*
+    used to test variables
     void printCalculated();
-
+*/
 private:
     WGS84Params params;
     LLA lla;
     double X, Y, Z, N, h;
 
     double sinSquaredLat(double lat);
+    double squareRootNParams();
 };
