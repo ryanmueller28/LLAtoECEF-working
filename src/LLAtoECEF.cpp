@@ -103,7 +103,7 @@ int main(int argc, char** argv)
     }
 
     // out put
-    std::cout << "\n" << XDiff << "\t" << YDiff << "\t" << ZDiff << "\t" << NDiff << "\t" << ECEFVelocity << std::endl;
+    std::cout << "\nConversion:\nXDiff between the ECEFs: " << XDiff << "\tYDiff between the ECEFs: " << YDiff << "\tZDiff between the ECEFs: " << ZDiff << "\tNDiff between the ecefs: " << NDiff << "\tECEF estimated velocity: " << ECEFVelocity << std::endl;
 
     return EXIT_SUCCESS;
 }
