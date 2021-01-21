@@ -9,21 +9,21 @@ ECEF::ECEF()
 }
 /**
  * Constructor
- * @param - Lat, long double latitude
- * @param - Long, long double longitude
- * @param - Alt, long double altitude
+ * @param - Lat, long long double latitude
+ * @param - Long, long long double longitude
+ * @param - Alt, long long double altitude
  * @param - deltaTime, time since last unix epoch
- * @param - H, long double height
+ * @param - H, long long double height
  * set lla class parameter to LLA constructor
  * and set h class parameter to constructor function parameter
  * */
-ECEF::ECEF(double Lat, double Long, double Alt, double deltaTime)
+ECEF::ECEF(long double Lat, long double Long, long double Alt, long double deltaTime)
 {
     lla = LLA(Lat, Long, Alt, deltaTime);
     h = Alt;
 }
 
-double ECEF::convertLLAtoX()
+long double ECEF::convertLLAtoX()
 {
     /**
      * Calculate the X ECEF by getting N and calculating constants
@@ -33,7 +33,7 @@ double ECEF::convertLLAtoX()
     return X;
 }
 
-double ECEF::convertLLAtoY()
+long double ECEF::convertLLAtoY()
 {
     /**
      * Calculate the Y ECEF by getting N and calculating constants
@@ -43,7 +43,7 @@ double ECEF::convertLLAtoY()
     return Y;
 }
 
-double ECEF::convertLLAtoZFlattened()
+long double ECEF::convertLLAtoZFlattened()
 {
     /**
      * Convert Z using the flattened semi minor axis
@@ -52,7 +52,7 @@ double ECEF::convertLLAtoZFlattened()
     return Z;
 }
 
-double ECEF::convertLLAtoZConstant()
+long double ECEF::convertLLAtoZConstant()
 {   
    /**
     * Convert Z using semi minor axis constant
@@ -61,7 +61,7 @@ double ECEF::convertLLAtoZConstant()
     return Z;
 }
 
-double ECEF::calculateN()
+long double ECEF::calculateN()
 {
     /**
      * Get radius of curvate using
@@ -72,30 +72,22 @@ double ECEF::calculateN()
     return N;
 }
 
-double ECEF::squareRootNParams()
+long double ECEF::squareRootNParams()
 {
     // Feels hacky to return the inverse, but it's a negative number otherwise and sqrt a negative number returns -NAN
     return -(1 - pow(M_E, 2) * sinSquaredLat(lla.getLat()));
 }
 
-double ECEF::sinSquaredLat(double lat)
+long double ECEF::sinSquaredLat(long double lat)
 {
-    double tmp = sin(lat);
+    long double tmp = sin(lat);
     return tmp * tmp;
 }
 
-/*
-Funciton for testing print issues
-void ECEF::printCalculated()
+void ECEF::fullConversion()
 {
-    double calcX = convertLLAtoX();
-    double calcY = convertLLAtoY();
-    double calcZ = convertLLAtoZFlattened();
-    double calcN = calculateN();
-    std::cout << "Printing calculated ECEF Values:\n";
-    std::cout << "\tCalling sinSquaredLat function:\t" << sinSquaredLat(lla.getLat()) << std::endl;
-    std::cout << "\t\tCalling SquareRootNParamsFunction:\t" << squareRootNParams() << std::endl;
-    std::cout << calculateN() << std::endl;
-    std::cout << calcX << "\t" << calcY << "\t" << calcZ << "\t" << calcN << std::endl;
+    N = calculateN();
+    X = convertLLAtoX();
+    Y = convertLLAtoY();
+    Z = convertLLAtoZFlattened();
 }
-*/

@@ -15,7 +15,8 @@ constructed into the proper format in the build folder.
 ## To Execute the program
 The program uses two parameters in the command line. The name of the program:
 ```LLAtoECEF``` and the name and path of the CSV file to run. In this case to run the program it will be:
-```./LLAtoECEF ../data/SciTec_code_problem_data.csv```.
+```./LLAtoECEF ../data/SciTec_code_problem_data.csv```. A run.sh file has already been included in the build folder for your
+convenience. You can call it as a bash executable with either ```bash run.sh``` or ```./run.sh```.
 
 ## Reasoning for structure
 ### The program's class design
