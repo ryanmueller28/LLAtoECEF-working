@@ -12,23 +12,23 @@ class ECEF{
 public:
 
     ECEF();
-    ECEF(long double Lat, long double Long, long double Alt, long double deltaTime);
+    ECEF( double Lat,  double ,  double Alt,  double deltaTime);
 
     void fullConversion();
 
-    long double convertLLAtoX();
-    long double convertLLAtoY();
-    long double convertLLAtoZFlattened();
-    long double convertLLAtoZConstant();
-    long double calculateN();
+     double convertLLAtoX();
+     double convertLLAtoY();
+     double convertLLAtoZFlattened();
+     double convertLLAtoZConstant();
+     double calculateN();
     LLA lla;
 
     
 
 private:
     WGS84Params params;
-    long double X, Y, Z, N, h;
+     double X, Y, Z, N, h;
 
-    long double sinSquaredLat(long double lat);
-    long double squareRootNParams();
+     double sinSquaredLat( double lat);
+     double squareRootNParams();
 };

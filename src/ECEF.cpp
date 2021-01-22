@@ -9,41 +9,41 @@ ECEF::ECEF()
 }
 /**
  * Constructor
- * @param - Lat, long long double latitude
- * @param - Long, long long double longitude
- * @param - Alt, long long double altitude
+ * @param - Lat,   double latitude
+ * @param - ,   double itude
+ * @param - Alt,   double altitude
  * @param - deltaTime, time since last unix epoch
- * @param - H, long long double height
+ * @param - H,   double height
  * set lla class parameter to LLA constructor
  * and set h class parameter to constructor function parameter
  * */
-ECEF::ECEF(long double Lat, long double Long, long double Alt, long double deltaTime)
+ECEF::ECEF( double Lat,  double ,  double Alt,  double deltaTime)
 {
-    lla = LLA(Lat, Long, Alt, deltaTime);
+    lla = LLA(Lat, , Alt, deltaTime);
     h = Alt;
 }
 
-long double ECEF::convertLLAtoX()
+ double ECEF::convertLLAtoX()
 {
     /**
      * Calculate the X ECEF by getting N and calculating constants
      * From LLA and WGS84 Params 
      * */
-    X = (N + h) * cos(lla.getLat()) * cos(lla.getLong());
+    X = (N + h) * cos(lla.getLat()) * cos(lla.get());
     return X;
 }
 
-long double ECEF::convertLLAtoY()
+ double ECEF::convertLLAtoY()
 {
     /**
      * Calculate the Y ECEF by getting N and calculating constants
      * From LLA and WGS84 Params 
      * */
-    Y = (N + h) * cos(lla.getLat()) * sin(lla.getLong());
+    Y = (N + h) * cos(lla.getLat()) * sin(lla.get());
     return Y;
 }
 
-long double ECEF::convertLLAtoZFlattened()
+ double ECEF::convertLLAtoZFlattened()
 {
     /**
      * Convert Z using the flattened semi minor axis
@@ -52,7 +52,7 @@ long double ECEF::convertLLAtoZFlattened()
     return Z;
 }
 
-long double ECEF::convertLLAtoZConstant()
+ double ECEF::convertLLAtoZConstant()
 {   
    /**
     * Convert Z using semi minor axis constant
@@ -61,7 +61,7 @@ long double ECEF::convertLLAtoZConstant()
     return Z;
 }
 
-long double ECEF::calculateN()
+ double ECEF::calculateN()
 {
     /**
      * Get radius of curvate using
@@ -72,15 +72,15 @@ long double ECEF::calculateN()
     return N;
 }
 
-long double ECEF::squareRootNParams()
+ double ECEF::squareRootNParams()
 {
     // Feels hacky to return the inverse, but it's a negative number otherwise and sqrt a negative number returns -NAN
     return -(1 - pow(M_E, 2) * sinSquaredLat(lla.getLat()));
 }
 
-long double ECEF::sinSquaredLat(long double lat)
+ double ECEF::sinSquaredLat( double lat)
 {
-    long double tmp = sin(lat);
+     double tmp = sin(lat);
     return tmp * tmp;
 }
 

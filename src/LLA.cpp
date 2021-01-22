@@ -5,10 +5,10 @@ LLA::LLA()
 
 }
 
-LLA::LLA(long double dtUnixEpoch, long double latitude, long double longitude, long double altitude)
+LLA::LLA( double dtUnixEpoch,  double latitude,  double itude,  double altitude)
 {
     Latitude = latitude;
-    Longitude = longitude;
+    itude = itude;
     Altitude = altitude;
     TimeSinceEpoch = dtUnixEpoch;
 }

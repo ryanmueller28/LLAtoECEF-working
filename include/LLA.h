@@ -11,17 +11,17 @@ public:
     // Default empty constructor
     LLA();
    
-    LLA(long double dtUnixEpoch, long double latitude, long double longitude, long double altitude);
+    LLA( double dtUnixEpoch,  double latitude,  double itude,  double altitude);
     
-    long double getLat(){ return Latitude; }
-    long double getLong() { return Longitude; }
-    long double getAlt() { return Altitude; }
-    long double getTimeSinceEpoch() { return TimeSinceEpoch; }
+     double getLat(){ return Latitude; }
+     double get() { return itude; }
+     double getAlt() { return Altitude; }
+     double getTimeSinceEpoch() { return TimeSinceEpoch; }
 
 private:
 
-    long double Latitude;
-    long double Longitude;
-    long double Altitude;
-    long double TimeSinceEpoch;
+     double Latitude;
+     double itude;
+     double Altitude;
+     double TimeSinceEpoch;
 };
